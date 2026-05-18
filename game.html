@@ -19,6 +19,19 @@
     .btn-cat:hover {
       background-color: #ffc0cb;
     }
+
+    .cat {
+      width: 150px;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.5s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -35,6 +48,9 @@
   </button>
 
   <p id="result" class="mt-3"></p>
+
+  <!-- KUCING -->
+  <img id="catImg" class="cat" src="">
 </div>
 
 <script>
@@ -42,12 +58,21 @@ let number = Math.floor(Math.random() * 10) + 1;
 
 function checkGuess() {
   let guess = document.getElementById("guess").value;
+  let cat = document.getElementById("catImg");
 
   if (guess == number) {
     document.getElementById("result").innerHTML = "😺 Benar! Kucing senang!";
+    cat.src = "https://placekitten.com/200/200";
   } else {
-    document.getElementById("result").innerHTML = "🙀 Salah! Coba lagi!";
+    document.getElementById("result").innerHTML = "🙀 Salah! Kucing sedih...";
+    cat.src = "https://placekitten.com/200/201";
   }
+
+  // munculin animasi
+  cat.classList.remove("show");
+  setTimeout(() => {
+    cat.classList.add("show");
+  }, 50);
 }
 </script>
 
