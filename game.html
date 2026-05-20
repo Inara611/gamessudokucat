@@ -4,58 +4,23 @@
   <meta charset="UTF-8">
   <title>Game Kucing 🐱</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap (VERSI AMAN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    body {
-      background-color: #800000;
-      color: white;
-    }
-
-    .btn-cat {
-      background-color: #ffb6c1;
-      border: none;
-    }
-
-    .btn-cat:hover {
-      background-color: #ffc0cb;
-    }
-
-    .cat {
-      width: 150px;
-      margin-top: 20px;
-      transition: 0.5s;
-    }
-
-    /* Navbar biar sama kayak index */
-    .navbar {
-      padding: 15px 0;
-    }
-
-    .navbar .btn {
-      border-radius: 10px;
-      padding: 6px 15px;
-    }
-  </style>
 </head>
 
-<body>
+<body style="background-color:#800000; color:white;">
 
-<!-- ✅ NAVBAR (SAMA PERSIS KAYAK INDEX) -->
+<!-- NAVBAR (SAMA KAYAK INDEX) -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
   <div class="container">
 
-    <!-- Brand kiri -->
     <a class="navbar-brand fw-bold" href="index.html">🐱 Inara Game</a>
 
-    <!-- Burger -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu kanan -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="nav">
       <div class="ms-auto d-flex gap-2">
         <a href="index.html" class="btn btn-outline-light">Home</a>
         <a href="profile.html" class="btn btn-outline-light">Profile</a>
@@ -69,55 +34,52 @@
 
 <!-- GAME -->
 <div class="container text-center mt-5">
+
   <h2>🎮 Tebak Angka Kucing 🐱</h2>
   <p>Tebak angka 1 - 10 biar si kucing senang 😺</p>
 
-  <input type="number" id="guess" class="form-control w-25 mx-auto" min="1" max="10">
+  <input id="guess" type="number" class="form-control w-25 mx-auto">
 
-  <button onclick="checkGuess()" class="btn btn-cat mt-3">Tebak 🐾</button>
-  <button onclick="resetGame()" class="btn btn-light mt-3 ms-2">Reset 🔄</button>
+  <button onclick="checkGuess()" class="btn btn-danger mt-3">Tebak</button>
+  <button onclick="resetGame()" class="btn btn-light mt-3">Reset</button>
 
   <p id="result" class="mt-3"></p>
 
-  <!-- Gambar aman -->
-  <img id="catImg" class="cat"
-    src="https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg"
-    alt="kucing lucu">
+  <!-- GAMBAR SUPER AMAN -->
+  <img id="catImg" src="https://placekitten.com/200/200" width="150">
+
 </div>
 
-<!-- JS -->
+<!-- SCRIPT PALING AMAN -->
 <script>
 let number = Math.floor(Math.random() * 10) + 1;
 
 function checkGuess() {
   let guess = document.getElementById("guess").value;
-  let cat = document.getElementById("catImg");
 
-  if (guess === "" || guess < 1 || guess > 10) {
-    document.getElementById("result").innerHTML = "⚠️ Masukkan angka 1 - 10!";
+  if (!guess) {
+    document.getElementById("result").innerHTML = "Isi dulu 😾";
     return;
   }
 
   if (guess == number) {
     document.getElementById("result").innerHTML = "😺 Benar!";
-    cat.src = "https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg";
+    document.getElementById("catImg").src = "https://placekitten.com/200/201";
   } else {
     document.getElementById("result").innerHTML = "🙀 Salah!";
-    cat.src = "https://cdn2.thecatapi.com/images/9j5.jpg";
+    document.getElementById("catImg").src = "https://placekitten.com/200/202";
   }
 }
 
 function resetGame() {
   number = Math.floor(Math.random() * 10) + 1;
-  document.getElementById("result").innerHTML = "Reset! 😺";
+  document.getElementById("result").innerHTML = "Reset 😺";
   document.getElementById("guess").value = "";
-
-  document.getElementById("catImg").src =
-    "https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg";
+  document.getElementById("catImg").src = "https://placekitten.com/200/200";
 }
 </script>
 
-<!-- Bootstrap JS -->
+<!-- WAJIB -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
